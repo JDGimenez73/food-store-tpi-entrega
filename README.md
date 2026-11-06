@@ -78,5 +78,5 @@ Nunca subir `.env` al repositorio. Los archivos `.env.example` documentan los va
 
 ## Datos de demostración
 
-El seed está previsto para crear `admin / Admin1234!`, al menos 3 categorías y 8 productos con stock. Debe poder repetirse sin duplicar datos. Estas credenciales corresponden al entorno académico de demostración.
+El seed crea `admin / Admin1234!`, 3 categorías y 8 productos con stock. Se verificó su repetición sin duplicar datos. Estas credenciales corresponden al entorno académico de demostración.
 
