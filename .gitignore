@@ -1,0 +1,48 @@
+# Configuración local y secretos
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+*.egg-info/
+
+# Frontend
+node_modules/
+.pnpm-store/
+dist/
+*.tsbuildinfo
+
+# Datos y temporales locales
+*.db
+*.db-shm
+*.db-wal
+.tmp/
+tmp/
+*.log
+
+# Editores y sistema
+.idea/
+.DS_Store
+Thumbs.db
+.worktrees/
+
+# Auxiliares locales de desarrollo
+/.local/
+/AGENTS.md
+/SKILL.md
+/.agents/
+/.codex/
+/.github/instructions/
+
+# Planificacion local; docs conserva solo la consigna y el diagrama
+/docs/*.md
+
+# Bitacoras de desarrollo locales
+/backend/VALIDACION.md
+/frontend/VALIDACION.md
+/backend/REFERENCIAS.md
