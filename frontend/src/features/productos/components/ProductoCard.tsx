@@ -22,7 +22,7 @@ export function ProductoCard({ producto }: { producto: Producto }) {
           />
         ) : (
           <div className="food-placeholder" aria-hidden="true">
-            ?<span>HECHO PARA DISFRUTAR</span>
+            🍽<span>HECHO PARA DISFRUTAR</span>
           </div>
         )}
         <span className="product-category">{producto.categoria.nombre}</span>

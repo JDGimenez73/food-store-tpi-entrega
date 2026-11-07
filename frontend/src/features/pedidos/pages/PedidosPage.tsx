@@ -127,7 +127,9 @@ export function PedidosPage({ admin = false }: { admin?: boolean }) {
                         <BadgeEstado estado={pedido.estado} />
                       </div>
                       <p className="mt-3 text-sm text-stone-500">
-                        {new Date(pedido.created_at).toLocaleString("es-AR")}
+                        {new Date(pedido.created_at).toLocaleString("es-AR", {
+                          hour12: false,
+                        })}
                         {admin ? ` · Cliente #${pedido.usuario_id}` : ""}
                       </p>
                       <p className="text-sm mt-2">

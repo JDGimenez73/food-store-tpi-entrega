@@ -25,7 +25,9 @@ export function AdminPedidosTable({
       accessorKey: "created_at",
       header: "Fecha",
       cell: ({ row }) =>
-        new Date(row.original.created_at).toLocaleString("es-AR"),
+        new Date(row.original.created_at).toLocaleString("es-AR", {
+          hour12: false,
+        }),
     },
     {
       accessorKey: "estado",
