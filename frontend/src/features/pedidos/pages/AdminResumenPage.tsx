@@ -14,7 +14,7 @@ export function AdminResumenPage() {
         description="Los números que acompañan cada buena decisión."
       />
       {query.isPending ? (
-        <p role="status">Cargando resumenú</p>
+        <p role="status">Cargando resumen…</p>
       ) : query.isError ? (
         <EstadoError error={query.error} retry={() => void query.refetch()} />
       ) : (

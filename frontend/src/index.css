@@ -619,6 +619,7 @@ td:first-child {
   font-weight: 600;
 }
 .modal {
+  margin: auto;
   width: min(570px, calc(100% - 28px));
   max-height: 90vh;
   overflow: auto;

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useId, useRef } from "react";
 import type {
   ButtonHTMLAttributes,
   InputHTMLAttributes,
@@ -50,15 +50,23 @@ export function Modal({
   onClose: () => void;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
+  const titleId = useId();
   useEffect(() => {
     const dialog = ref.current;
     dialog?.showModal();
     return () => dialog?.close();
   }, []);
   return (
-    <dialog ref={ref} className="modal" onCancel={onClose}>
+    <dialog
+      ref={ref}
+      className="modal"
+      aria-labelledby={titleId}
+      onCancel={onClose}
+    >
       <div className="flex items-center justify-between gap-4 mb-6">
-        <h2 className="text-2xl font-bold">{title}</h2>
+        <h2 id={titleId} className="text-2xl font-bold">
+          {title}
+        </h2>
         <button
           type="button"
           className="icon-button"

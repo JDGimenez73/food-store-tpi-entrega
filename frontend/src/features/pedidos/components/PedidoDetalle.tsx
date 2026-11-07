@@ -24,7 +24,11 @@ export function PedidoDetalle({
           <BadgeEstado estado={query.data.estado} />
           <dl className="detail-grid my-6">
             <dt>Fecha</dt>
-            <dd>{new Date(query.data.created_at).toLocaleString("es-AR")}</dd>
+            <dd>
+              {new Date(query.data.created_at).toLocaleString("es-AR", {
+                hour12: false,
+              })}
+            </dd>
             <dt>Entrega</dt>
             <dd>{query.data.direccion_entrega}</dd>
             <dt>Pago</dt>
@@ -48,7 +52,7 @@ export function PedidoDetalle({
               >
                 <div>
                   <strong>
-                    {item.cantidad} ? {item.nombre_producto}
+                    {item.cantidad} × {item.nombre_producto}
                   </strong>
                   <p className="text-xs text-stone-500">
                     {money(item.precio_unitario)} por unidad

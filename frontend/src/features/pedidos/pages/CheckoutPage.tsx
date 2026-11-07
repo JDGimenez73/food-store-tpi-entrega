@@ -153,7 +153,7 @@ export function CheckoutPage() {
                 className="flex justify-between gap-3 text-sm"
               >
                 <span>
-                  {item.cantidad} ? {item.nombre}
+                  {item.cantidad} × {item.nombre}
                 </span>
                 <strong>{money(item.cantidad * item.precio_unitario)}</strong>
               </div>
