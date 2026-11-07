@@ -4,6 +4,15 @@ import { authApi } from "../features/auth/api/auth";
 import type { UserPublic } from "../features/auth/types";
 import { registerSessionCleaner } from "../shared/api/axiosInstance";
 import { queryClient } from "../shared/api/queryClient";
+
+function clearSessionData() {
+  // Conservar el catalogo publico que puede estar cargando al verificar la sesion.
+  for (const key of ["pedidos", "resumen", "usuarios"]) {
+    queryClient.removeQueries({ queryKey: [key] });
+  }
+  queryClient.getMutationCache().clear();
+}
+
 interface AuthState {
   usuario: UserPublic | null;
   cargando: boolean;
@@ -20,24 +29,24 @@ export const useAuthStore = create<AuthState>()(
       login: async (username, password) => {
         await authApi.login(username, password);
         const usuario = await authApi.me();
-        queryClient.clear();
+        clearSessionData();
         set({ usuario, cargando: false });
       },
       logout: async () => {
         await authApi.logout();
-        queryClient.clear();
+        clearSessionData();
         set({ usuario: null, cargando: false });
       },
       checkSession: async () => {
         try {
           set({ usuario: await authApi.me(), cargando: false });
         } catch {
-          queryClient.clear();
+          clearSessionData();
           set({ usuario: null, cargando: false });
         }
       },
       clear: () => {
-        queryClient.clear();
+        clearSessionData();
         set({ usuario: null, cargando: false });
       },
     }),
