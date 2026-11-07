@@ -34,7 +34,7 @@ En PowerShell, desde la raíz:
 cd backend
 python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
-Copy-Item .env.example .env
+if (-not (Test-Path .env)) { Copy-Item .env.example .env }
 ```
 
 Revisá `.env` antes de continuar: configurá la conexión elegida y reemplazá SECRET_KEY por una clave propia de al menos 32 caracteres. Para desarrollar sin PostgreSQL, usá `DATABASE_URL=sqlite:///./foodstore.db`.
@@ -54,7 +54,7 @@ En otra terminal, desde la raíz:
 
 ```powershell
 cd frontend
-Copy-Item .env.example .env
+if (-not (Test-Path .env)) { Copy-Item .env.example .env }
 pnpm.cmd install --frozen-lockfile
 pnpm.cmd build
 pnpm.cmd dev
@@ -75,6 +75,8 @@ Abrí http://localhost:5173. Usá `localhost` tanto en frontend como en API para
 | Frontend | VITE_API_URL | http://localhost:8000/api/v1. |
 
 Nunca subir `.env` al repositorio. Los archivos `.env.example` documentan los valores locales.
+
+Si Windows rechaza la apertura del puerto de PostgreSQL o el puerto ya está ocupado, elegí otro libre y actualizá DATABASE_URL. Si usás Docker, también ajustá el puerto publicado en compose.yaml. Usar una instancia exclusiva del proyecto permite conservar las bases de trabajos anteriores.
 
 ## Datos de demostración
 
