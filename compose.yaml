@@ -6,7 +6,7 @@ services:
       POSTGRES_PASSWORD: foodstore_local
       POSTGRES_DB: foodstore_db
     ports:
-      - "127.0.0.1:5433:5432"
+      - "127.0.0.1:${FOODSTORE_DB_PORT:-55433}:5432"
     volumes:
       - foodstore_data:/var/lib/postgresql/data
     healthcheck:

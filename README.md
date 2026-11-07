@@ -22,7 +22,9 @@ Con Docker Desktop ejecutándose, desde la raíz:
 docker compose up -d
 ```
 
-El servicio usa PostgreSQL 16 y publica el puerto local **5433**, para evitar conflictos con instalaciones en 5432. Credenciales de desarrollo: usuario `foodstore`, contraseña `foodstore_local`, base `foodstore_db`. El volumen `foodstore_data` conserva los datos. `docker compose down` detiene el servicio sin borrar ese volumen.
+El servicio usa PostgreSQL 16 y publica el puerto local **55433**, para evitar conflictos con instalaciones en 5432 y el bloqueo del puerto 5433 detectado en Windows. Credenciales de desarrollo: usuario `foodstore`, contraseña `foodstore_local`, base `foodstore_db`. El volumen `foodstore_data` conserva los datos. `docker compose down` detiene el servicio sin borrar ese volumen.
+
+El puerto se puede cambiar mediante la variable FOODSTORE_DB_PORT al ejecutar Docker Compose. Si lo cambiás, actualizá también el puerto de DATABASE_URL en backend/.env.
 
 Si ya tenés PostgreSQL, creá una base para este proyecto y ajustá DATABASE_URL. No es necesario cambiar las bases de los trabajos anteriores.
 
