@@ -2,7 +2,16 @@
 
 Proyecto de Programación 4 de la Tecnicatura Universitaria en Programación a Distancia (UTN).
 
-## Tecnologías exigidas
+Aplicación web para consultar un catálogo de comidas, gestionar un carrito y realizar pedidos. Incluye un panel administrativo para categorías, productos, stock, usuarios y estados de pedidos.
+
+El proyecto se organiza en `backend/` (API) y `frontend/` (interfaz). La consigna y el diagrama UML están en `docs/`.
+
+## Documentación
+
+- [Consigna completa](docs/TPI_Food_Store.pdf), 23 páginas.
+- [Diagrama UML del modelo de datos](docs/modelo-datos.png).
+
+## Tecnologías
 
 Backend: Python 3.11 a 3.13, FastAPI, SQLModel, PostgreSQL y JWT en cookie HttpOnly.
 
@@ -22,11 +31,11 @@ Con Docker Desktop ejecutándose, desde la raíz:
 docker compose up -d
 ```
 
-El servicio usa PostgreSQL 16 y publica el puerto local **55433**, para evitar conflictos con instalaciones en 5432 y el bloqueo del puerto 5433 detectado en Windows. Credenciales de desarrollo: usuario `foodstore`, contraseña `foodstore_local`, base `foodstore_db`. El volumen `foodstore_data` conserva los datos. `docker compose down` detiene el servicio sin borrar ese volumen.
+El servicio usa PostgreSQL 16 y publica el puerto local **55433**. Credenciales de desarrollo: usuario `foodstore`, contraseña `foodstore_local`, base `foodstore_db`. El volumen `foodstore_data` conserva los datos. `docker compose down` detiene el servicio sin borrar ese volumen.
 
 El puerto se puede cambiar mediante la variable FOODSTORE_DB_PORT al ejecutar Docker Compose. Si lo cambiás, actualizá también el puerto de DATABASE_URL en backend/.env.
 
-Si ya tenés PostgreSQL, creá una base para este proyecto y ajustá DATABASE_URL. No es necesario cambiar las bases de los trabajos anteriores.
+Si ya tenés PostgreSQL, creá una base para este proyecto y ajustá DATABASE_URL.
 
 ## Backend
 
@@ -78,9 +87,22 @@ Abrí http://localhost:5173. Usá `localhost` tanto en frontend como en API para
 
 Nunca subir `.env` al repositorio. Los archivos `.env.example` documentan los valores locales.
 
-Si Windows rechaza la apertura del puerto de PostgreSQL o el puerto ya está ocupado, elegí otro libre y actualizá DATABASE_URL. Si usás Docker, también ajustá el puerto publicado en compose.yaml. Usar una instancia exclusiva del proyecto permite conservar las bases de trabajos anteriores.
+Si Windows rechaza la apertura del puerto de PostgreSQL o el puerto ya está ocupado, elegí otro libre y actualizá DATABASE_URL. Si usás Docker, también ajustá el puerto publicado en compose.yaml.
 
 ## Datos de demostración
 
-El seed crea `admin / Admin1234!`, 3 categorías y 8 productos con stock. Se verificó su repetición sin duplicar datos. Estas credenciales corresponden al entorno académico de demostración.
+El seed crea `admin / Admin1234!`, 3 categorías y 8 productos con stock. El seed puede repetirse sin duplicar los datos iniciales. Estas credenciales corresponden al entorno académico de demostración.
 
+## Uso
+
+El catálogo permite buscar y filtrar productos. Para confirmar una compra, el cliente debe registrarse e ingresar una dirección y una forma de pago: efectivo o transferencia manual. El total se calcula en el servidor.
+
+Los pedidos avanzan de PENDIENTE a EN_PREPARACION y ENTREGADO. El cliente puede cancelar pedidos pendientes; el administrador puede cancelar pedidos pendientes o en preparación. La cancelación restituye el stock. Los pedidos entregados y cancelados conservan su historial.
+
+El administrador accede desde el menú al panel de categorías, productos, pedidos, usuarios y resumen de indicadores.
+
+## Referencias
+
+La autenticación adapta el proyecto académico `seguridad_jwt_pg` de la materia. La arquitectura, el catálogo y los pedidos se desarrollan según la consigna del TPI.
+
+Documentación técnica: [relaciones con SQLModel](https://sqlmodel.tiangolo.com/tutorial/fastapi/relationships/) y [sesiones con SQLAlchemy](https://docs.sqlalchemy.org/en/20/orm/session_basics.html).
