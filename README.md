@@ -101,6 +101,11 @@ Los pedidos avanzan de PENDIENTE a EN_PREPARACION y ENTREGADO. El cliente puede 
 
 El administrador accede desde el menú al panel de categorías, productos, pedidos, usuarios y resumen de indicadores.
 
+## Enlaces
+
+- [Repositorio del proyecto](https://github.com/JDGimenez73/food-store-tpi-entrega).
+- [Video de demostración](https://drive.google.com/file/d/1mqzqGsO_jX3WwBcfM9dLDHfd7Vdok0fS/view?usp=sharing).
+
 ## Referencias
 
 La autenticación adapta el proyecto académico `seguridad_jwt_pg` de la materia. La arquitectura, el catálogo y los pedidos se desarrollan según la consigna del TPI.
