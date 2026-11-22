@@ -104,7 +104,7 @@ El administrador accede desde el menú al panel de categorías, productos, pedid
 ## Enlaces
 
 - [Repositorio del proyecto](https://github.com/JDGimenez73/food-store-tpi-entrega).
-- [Video de demostración](https://drive.google.com/file/d/1mqzqGsO_jX3WwBcfM9dLDHfd7Vdok0fS/view?usp=sharing).
+- [Video de demostración](https://drive.google.com/file/d/1zkB8kYn6P0M4_O070__nsFWvvJB5MZ-J/view?usp=sharing).
 
 ## Referencias
 
